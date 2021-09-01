@@ -30,9 +30,7 @@ function AuthProvider({ children }) {
   }, [history]);
 
   return (
-    <AuthContext.Provider value={{ user }}>
-      {isLoading ? <Spin /> : children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={{ user }}>{isLoading ? <Spin /> : children}</AuthContext.Provider>
   );
 }
 
