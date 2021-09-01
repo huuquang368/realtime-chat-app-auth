@@ -1,0 +1,24 @@
+.message {
+  margin-bottom: 16px;
+  &-info {
+    display: flex;
+    align-items: center;
+    &__avatar {
+      margin-left: 5px;
+    }
+    .ant-typography,
+    &__author {
+      margin-left: 5px;
+      font-weight: bold;
+      margin-bottom: 0px;
+    }
+    &__date {
+      margin-left: 10px;
+      font-size: 11px;
+      color: #a7a7a7;
+    }
+  }
+  &-content {
+    margin-left: 30px;
+  }
+}

@@ -4,9 +4,12 @@
 
 .ant-collapse-content-box {
   padding: 0 40px;
+  display: flex;
+  flex-direction: column;
 }
 
-.ant-typography {
+.ant-typography,
+.room-item {
   display: block;
   margin-bottom: 5px;
   margin-left: 16px;

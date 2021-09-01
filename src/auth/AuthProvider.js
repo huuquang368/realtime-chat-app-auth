@@ -1,9 +1,9 @@
-import React, { createContext, useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { Spin } from "antd";
-import { useHistory } from "react-router-dom";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase/config";
+import React, { createContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { Spin } from 'antd';
+import { useHistory } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase/config';
 
 const AuthContext = createContext();
 
@@ -13,14 +13,17 @@ function AuthProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      console.log({ user });
       if (user) {
         const { displayName, email, uid, photoURL } = user;
         setUser({ displayName, email, uid, photoURL });
         setIsLoading(false);
-        history.push("/");
+        history.push('/');
+        return;
       }
-      history.push("/login");
+      setIsLoading(false);
+      history.push('/login');
     });
     // clean function
     return () => unsubscribe();
