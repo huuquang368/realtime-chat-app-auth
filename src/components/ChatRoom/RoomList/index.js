@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 import { Button, Collapse, Typography } from 'antd';
 import { PlusSquareOutlined } from '@ant-design/icons';
 import { AppContext } from 'context/AppProvider';
@@ -7,11 +6,8 @@ import './styles.scss';
 
 const { Panel } = Collapse;
 
-function RoomList(props) {
+function RoomList() {
   const { rooms, setIsVisibleAddRoom, setSelectedRoomId } = useContext(AppContext);
-  useEffect(() => {
-    setSelectedRoomId(rooms[0]?.id);
-  }, [setSelectedRoomId, rooms]);
 
   const handleAddRoom = () => setIsVisibleAddRoom(true);
   return (
@@ -39,7 +35,5 @@ function RoomList(props) {
     </Collapse>
   );
 }
-
-RoomList.propTypes = {};
 
 export default RoomList;

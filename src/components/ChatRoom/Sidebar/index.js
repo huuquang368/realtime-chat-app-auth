@@ -1,11 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Col, Row } from "antd";
-import UserInfo from "../UserInfo";
-import RoomList from "../RoomList";
-import "./styles.scss";
+import React from 'react';
+import { Col, Row } from 'antd';
+import UserInfo from '../UserInfo';
+import RoomList from '../RoomList';
+import './styles.scss';
 
-function Sidebar(props) {
+function Sidebar() {
   return (
     <div className="sidebar">
       <Row>
@@ -19,7 +18,5 @@ function Sidebar(props) {
     </div>
   );
 }
-
-Sidebar.propTypes = {};
 
 export default Sidebar;

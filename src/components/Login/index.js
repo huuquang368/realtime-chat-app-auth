@@ -5,7 +5,7 @@ import { signInWithPopup } from 'firebase/auth';
 import { FacebookAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { getAdditionalUserInfo } from '@firebase/auth';
 import { auth } from '../../firebase/config';
-import { addDocument } from '../../firebase/services';
+import { addDocument, generateKeywords } from '../../firebase/services';
 
 const fbProvider = new FacebookAuthProvider();
 const ggProvider = new GoogleAuthProvider();
@@ -16,7 +16,14 @@ function Login() {
     const { displayName, email, photoURL, uid, providerId } = result?.user;
     const { isNewUser } = getAdditionalUserInfo(result);
     if (isNewUser) {
-      addDocument('users', { displayName, email, photoURL, uid, providerId });
+      addDocument('users', {
+        displayName,
+        email,
+        photoURL,
+        uid,
+        providerId,
+        keywords: generateKeywords(displayName),
+      });
     }
   };
 
@@ -25,7 +32,14 @@ function Login() {
     const { displayName, email, photoURL, uid, providerId } = result?.user;
     const { isNewUser } = getAdditionalUserInfo(result);
     if (isNewUser) {
-      addDocument('users', { displayName, email, photoURL, uid, providerId });
+      addDocument('users', {
+        displayName,
+        email,
+        photoURL,
+        uid,
+        providerId,
+        keywords: generateKeywords(displayName),
+      });
     }
   };
 

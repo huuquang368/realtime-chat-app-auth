@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Row, Col } from 'antd';
 import ChatWindow from './ChatWindow';
 import Sidebar from './Sidebar';
 
-function ChatRoom(props) {
+function ChatRoom() {
   return (
     <div>
       <Row>
@@ -18,7 +17,5 @@ function ChatRoom(props) {
     </div>
   );
 }
-
-ChatRoom.propTypes = {};
 
 export default ChatRoom;

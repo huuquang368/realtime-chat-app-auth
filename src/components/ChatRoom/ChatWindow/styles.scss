@@ -23,6 +23,11 @@
     &__button {
       display: flex;
       align-items: center;
+      .ant-btn-text:hover,
+      .ant-btn-text:focus {
+        color: rgba(0, 0, 0, 0.85);
+        background-color: white;
+      }
     }
   }
   &-content {
