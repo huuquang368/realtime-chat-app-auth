@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useContext, useMemo, useRef, useState } from 'react';
 import { Button, Tooltip, Avatar, Form, Input, Alert } from 'antd';
 import { UserAddOutlined } from '@ant-design/icons';
 
@@ -15,6 +15,7 @@ function ChatWindow() {
     user: { uid, displayName, photoURL },
   } = useContext(AuthContext);
   const [inputValue, setInputValue] = useState('');
+  const inputRef = useRef(null);
   const [form] = Form.useForm();
 
   const handleInputChange = e => setInputValue(e.target.value);
@@ -28,6 +29,13 @@ function ChatWindow() {
       photoURL,
     });
     form.resetFields(['messages']);
+
+    // focus to input again after submit
+    if (inputRef?.current) {
+      setTimeout(() => {
+        inputRef.current.focus();
+      });
+    }
   };
 
   const condition = useMemo(
@@ -84,6 +92,7 @@ function ChatWindow() {
             <Form form={form} className="chat-window-content__form">
               <Form.Item name="messages">
                 <Input
+                  ref={inputRef}
                   onChange={handleInputChange}
                   onPressEnter={handleSubmit}
                   placeholder="Enter message ..."
